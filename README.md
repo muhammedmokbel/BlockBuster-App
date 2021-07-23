@@ -7,7 +7,8 @@ This is a Main functional and colorful Web application. The app displays a grid 
 ### Features:
 This app can:
 * Display a grid of movie posters based on popularity or rating
-* Allow users to read movie reviews
+* Allow users to read & write movie reviews
+* authentication process
 
 ### Concepts Applied
 * Making network calls to 3rd party APIs
