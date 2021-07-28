@@ -14,12 +14,13 @@ const Slider = ({settings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
-} , children , myRef , myAsNavFor , classes }) => { 
+} , children , myRef , myAsNavFor , classes , beforeChange }) => { 
 
     
     return (
     <div>
     <SlickSlider 
+    beforeChange={beforeChange }
     {...settings}
     ref={myRef}
     asNavFor={myAsNavFor}

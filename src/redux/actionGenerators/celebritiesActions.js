@@ -14,7 +14,7 @@ const getTrendPerson = ({results = []}) => ({
 export const getCelebritiesAsync =  () => {
     return  dispatch => {
        return Promise.all([
-            request(celebritiesServiceObject.trendPerson)])
+            request(celebritiesServiceObject.trendPerson())])
         .then(res => {
             dispatch(getTrendPerson(res[0]))
         })

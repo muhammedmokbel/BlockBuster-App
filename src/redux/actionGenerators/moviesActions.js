@@ -31,10 +31,10 @@ const getTrendMovie = ({results = []}) => ({
 
 export const getMoviesAsync = () => {
     return dispatch => {
-        return Promise.all([request(moviesObject.popularMovies),
-             request(moviesObject.nowPlayingMovies),
-             request(moviesObject.topRatedMovies),
-            request(moviesObject.trendMovie) ])
+        return Promise.all([request(moviesObject.popularMovies()),
+             request(moviesObject.nowPlayingMovies()),
+             request(moviesObject.topRatedMovies()),
+            request(moviesObject.trendMovie()) ])
         .then(res => {
             dispatch(getPopularMovies(res[0]))
             dispatch(getNowPlayingMovies(res[1]))

@@ -82,7 +82,8 @@ class Home extends React.Component {
             currentTabOne : 'tab1', 
             currentTabTwo : 'tab1' , 
             currnetTabOneData : this.props.popularMovies, 
-            currentTabTwoData : this.props.popularSeries
+            currentTabTwoData : this.props.popularSeries , 
+            isPlaying : false  , 
     }
 
     componentDidMount() {
@@ -92,7 +93,8 @@ class Home extends React.Component {
          this.setState({
            isLoading : false ,
            currnetTabOneData : this.props.popularMovies,
-           currentTabTwoData : this.props.popularSeries
+           currentTabTwoData : this.props.popularSeries, 
+      
          })
        })
 
@@ -133,13 +135,34 @@ class Home extends React.Component {
       tabName == 'tab3' ? this.props.nowPlayingSeries : []
     })
   }
+  // handleSetPlaying = (id) => {
+
+  //   this.setState({
+  //     trailersSeries : this.state.trailersSeries.map(item => {
+  //       if (item.idPlaying == id)
+  //         item.isPlaying = false 
+  //       return item 
+  //     })
+  //   })
+  //   // this.setState({
+  //   //   isPlaying : !this.state.isPlaying 
+  //   // })
+  // }
+  // handleStart = (id) => {
+  //   this.setState({
+  //     trailersSeries : this.state.trailersSeries.map(item => {
+  //       if (item.idPlaying == id)
+  //         item.isPlaying = true 
+  //       return item 
+  //     })
+  //   })
+  // }
     
     render() {
         return (
            <PreLoader 
            isloading={this.state.isLoading}>
-                <Header />
-
+         
 
                 <div className="slider movie-items">
 	<div className="container">
@@ -243,13 +266,19 @@ class Home extends React.Component {
               slidesToShow: 1,
               slidesToScroll: 1,
               arrows: false,
-              // fade: true,
+              fade: true,
              }}
-             
              myRef={this.handleSlick1}
              myAsNavFor={this.state.slider2}>
 
-               {this.props.trailersSeries.map(item =>   <SliderItemTrailer key={item.id} id={item.key} />)}
+               {this.props.trailersSeries.map((item, index) =>{
+               
+                 return (
+                  <SliderItemTrailer 
+                  key={item.id} 
+                  id={item.key} />
+                 )
+               })}
                 
           
           
@@ -260,36 +289,40 @@ class Home extends React.Component {
 				 	
 						
 					</div>
-					<div class="slider-nav-2 thumb-ft ">
+					<div class="slider-nav-2 thumb-ft overflowHidden">
     
             <Slider 
             settings={
               {
-                slidesToShow: 4,
+                slidesToShow: 3,
                 slidesToScroll: 1,
+                asNavFor: '.slider-for-2',
                 dots: false,
-                arrows: true,
+                arrows: false,
+                // centerMode: true,
                 focusOnSelect: true,
                 vertical: true,
-                infinite : false
+                draggable : true 
+                // autoplay: true,
+                // autoplaySpeed: 2000
+                // infinite : false
+                
 
               }
             }
             myRef={this.handleSlick2 }
             myAsNavFor={this.state.slider1}>
 
-              {this.props.trendSeries.slice(0,5).map(item => <SliderItemDesc key={item.id} {...item} />)}
+              {this.props.trendSeries.slice(0,5).map((item , index) =>{
+               
+
+                return (
+                  <SliderItemDesc key={index} {...item} />
+                )
+
+              })}
 
              
-             
-
-
-             
-
-             
-
-          
-              
               
 
             </Slider>
@@ -305,7 +338,6 @@ class Home extends React.Component {
 
             {/* end trailers here */}
 
-<Footer />
 
 </PreLoader>
         )

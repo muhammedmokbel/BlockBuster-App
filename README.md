@@ -28,6 +28,8 @@ This app can:
 This application uses [The Movie Database, TMDb](https://www.themoviedb.org/) API to serve the movie data. You must provide your own API key in order to build the app. After obtaining an API key
 
 
-
+### User Facing Screens
+## Main Screen </br>
+<img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/assets/images/screens/screencapture-localhost-3000-2021-07-28-09_40_49.png" width="400">
 
 

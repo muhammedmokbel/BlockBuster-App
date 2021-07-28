@@ -1,15 +1,22 @@
-import PreLoader from './components/PreloaderComponent/Preloader'
-
+import {BrowserRouter , Route , Switch} from 'react-router-dom'
+import Header from './components/HeaderComponent/Header'
+import Footer from './components/FooterComponent/Footer'
 import Home from './containers/HomeContainer/Home'
 
-const App = () => {
 
-  return (
-    <div>
-      <Home />
+const App = () =>  (
+    <BrowserRouter>
+      <Header />
+        <Switch>
 
-    </div>
-  );
-}
+            <Route component={Home} path='/' exact />
+            <Route component={() => <p>not found</p>}  />
+
+        </Switch>
+      <Footer />
+
+    </BrowserRouter>
+  )
+
 
 export default App;

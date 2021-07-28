@@ -1785,6 +1785,12 @@ select[multiple].input-lg {
   -o-transition: opacity 0.15s linear 0.3s ease-out;
   transition: opacity 0.15s linear 0.3s ease-out;
 }
+/* me here */
+.overflowHidden {
+  overflow: hidden;
+}
+.slick-slide.slick-active { z-index: 999; }
+/* end me here */
 .fade.in {
   opacity: 1;
 }

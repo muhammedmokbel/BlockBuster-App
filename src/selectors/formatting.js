@@ -12,6 +12,10 @@ export const Formatting = (state) => {
            
         else if (item.profile_path && item.profile_path.charAt(0) == '/')
             item.profile_path = 'https://image.tmdb.org/t/p/w500' + item.profile_path
+        
+        if (item.profile_path == null)
+            item.profile_path = ''
+        
     
 
         

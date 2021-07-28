@@ -36,10 +36,10 @@ const getVideosTv = (results ) => ({
 // get series sync 
 export const getSeriesAsync = () => {
     return dispatch => {
-        Promise.all([request(seriesObject.nowPlayingSeries),
-        request(seriesObject.popularSeries), 
-    request(seriesObject.topRatedSeries),
-request(seriesObject.trendTv)])
+        Promise.all([request(seriesObject.nowPlayingSeries()),
+        request(seriesObject.popularSeries()), 
+    request(seriesObject.topRatedSeries()),
+request(seriesObject.trendTv())])
     .then(res => {
 
         res[3].results.slice(0,5).forEach(item => {
