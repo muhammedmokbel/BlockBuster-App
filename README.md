@@ -30,6 +30,6 @@ This application uses [The Movie Database, TMDb](https://www.themoviedb.org/) AP
 
 ### User Facing Screens
 ## Main Screen </br>
-<img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/assets/images/screens/screencapture-localhost-3000-2021-07-28-09_40_49.png" width="400">
+<img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-2021-07-28-09_40_49.png" width="400">
 
 
