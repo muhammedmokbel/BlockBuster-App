@@ -7,11 +7,13 @@ import * as movies from '../../redux/actionGenerators/moviesActions'
 import * as series from '../../redux/actionGenerators/seriesActions'
 import * as pagination from '../../redux/actionGenerators/paginationActions'
 import {Formatting} from '../../selectors/formatting'
+import {sortByItems} from '../../selectors/sortingItems'
 
 import PreLoader from '../../components/PreloaderComponent/Preloader'
 import BreadCumb from '../../components/breadcumbComponent/breadcumb'
 import TopBarFilter from '../../components/topbarFilterComponent/topbarFilter'
 import MovieListItem from '../../components/movieListItemComponent/movieListItem'
+import MovieGridItem from '../../components/movieGridItemComponent/movieGridItem'
 import Pagination from '../../components/paginationComponent/pagination'
 import SearchForm from '../../components/searchFormComponent/searchForm'
 
@@ -61,9 +63,22 @@ class Collection extends React.Component
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<TopBarFilter />
 
-				{ this.props.trendMovies
+				{this.props.view == "list" && this.props.trendMovies
 				.slice(this.props.startPoint , this.props.endPoint)
 				.map(item => <MovieListItem key={item.id} {...item} />)}
+
+				{this.props.view == "grid" ? 
+				<div class="flex-wrap-movielist">
+					
+						{this.props.trendMovies
+				.slice(this.props.startPoint , this.props.endPoint)
+				.map(item => <MovieGridItem key={item.id} {...item} />)}
+					
+					 </div> : null
+					 }
+
+
+
 				
 		
 
@@ -114,7 +129,7 @@ const mapStateToProps = state => {
 	console.log(state)
 
 	return {
-	  trendMovies : Formatting(state.moviesReducer.trendMovies) , 
+	  trendMovies : sortByItems(Formatting(state.moviesReducer.trendMovies) , state.topBarFilterReducer)  , 
 	  trendSeries : Formatting(state.seriesReducer.trendSeries) , 
 	  trendPerson : Formatting(state.celebritiesReducer.trendPerson) , 
 	  popularMovies : Formatting(state.moviesReducer.popular), 
@@ -128,7 +143,8 @@ const mapStateToProps = state => {
 	  startPoint : state.paginationReducer.startPoint , 
 	  endPoint : state.paginationReducer.endPoint , 
 	  numberMoviesToShow : state.paginationReducer.numberMoviesToShow  ,
-	  currentPageTenMode : state.paginationReducer.currentPageTenMode
+	  currentPageTenMode : state.paginationReducer.currentPageTenMode , 
+	  view : state.topBarFilterReducer.view
 	  
 	}
   }

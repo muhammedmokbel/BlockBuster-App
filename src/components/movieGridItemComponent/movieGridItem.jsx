@@ -1,15 +1,17 @@
 import React from 'react'
 
 
-const MovieGridItem = () => (
+import {Star , ChevronForward} from 'react-ionicons'
+
+const MovieGridItem = ({poster_path , original_title   , vote_average}) => (
     <div class="movie-item-style-2 movie-item-style-1">
-        <img src="images/uploads/mv1.jpg" alt="" />
+        <img style={{width : "100%"}} src={poster_path} alt="" />
         <div class="hvr-inner">
-            <a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+            <a  href="moviesingle.html"> Read more <ChevronForward  width="14px" height="14px" color={"white"} /> </a>
         </div>
         <div class="mv-item-infor">
-            <h6><a href="#">oblivion</a></h6>
-            <p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
+            <h6><a href="#">{original_title}</a></h6>
+            <p class="rate"><Star color={'gold'} style={{marginRight : "5px"}} /><span>{vote_average}</span> /10</p>
         </div>
     </div>
 )

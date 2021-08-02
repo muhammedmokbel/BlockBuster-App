@@ -1,23 +1,53 @@
 import React from 'react'
+import * as topBarFilterActions from '../../redux/actionGenerators/topBarFilterActions'
+
+import {connect} from 'react-redux'
 
 import {ListOutline , Grid , GridOutline} from 'react-ionicons'
 
-const TopBarFilter = () => (
+const TopBarFilter = ({changeView , view , sortByPopularity , sortByRating , sortByReleaseDate}) => (
     <div class="topbar-filter">
         <p>Found <span>1,608 movies</span> in total</p>
         <label>Sort by:</label>
-        <select>
-            <option value="popularity">Popularity Descending</option>
-            <option value="popularity">Popularity Ascending</option>
-            <option value="rating">Rating Descending</option>
-            <option value="rating">Rating Ascending</option>
-            <option value="date">Release date Descending</option>
-            <option value="date">Release date Ascending</option>
+        <select
+        onChange={(e) =>{
+          
+            switch(e.target.value.split('-')[0])
+            {
+                case "popularity" : 
+                    sortByPopularity(e.target.value.split('-')[1])
+                break 
+                case "rating" : 
+                    sortByRating(e.target.value.split('-')[1])
+                break 
+                case "date" : 
+                    sortByReleaseDate(e.target.value.split('-')[1])
+
+            }
+        } }>
+            <option value="popularity-Descending">Popularity Descending</option>
+            <option value="popularity-Ascending">Popularity Ascending</option>
+            <option value="rating-Descending">Rating Descending</option>
+            <option value="rating-Ascending">Rating Ascending</option>
+            <option value="date-Descending">Release date Descending</option>
+            <option value="date-Ascending">Release date Ascending</option>
         </select>
         
-        <a href="movielist.html" class="list"><ListOutline style={{marginRight : "5px"}} color="white" cssClasses="active" /></a>
-        <a  href="moviegrid.html" class="grid"> <GridOutline style={{marginTop : "5px"}} color="white" /> </a>
+        <a href="#" class="list"><ListOutline onClick={() => changeView('list')} style={{marginRight : "5px"}} color="white" cssClasses={view == "list" ? "active" :  'test' } /></a>
+        <a  href="#" class="grid"> <GridOutline onClick={() => changeView('grid')} style={{marginTop : "5px"}} color="white" cssClasses={view == "grid" ? "active" :  'test' } /> </a>
     </div>
 )
 
-export default TopBarFilter
+const mapStateToProps = state => ({
+    view :  state.topBarFilterReducer.view
+})
+
+const mapDispatchToProps = dispatch => ({
+    changeView : (view) => view == "list" ? dispatch(topBarFilterActions.changeToListView())  
+    :   dispatch(topBarFilterActions.changeToGridView()) , 
+    sortByPopularity : (val) => dispatch(topBarFilterActions.sortByPopularity(val)) , 
+    sortByRating : (val) => dispatch(topBarFilterActions.sortByRating(val)) , 
+    sortByReleaseDate : (val) => dispatch(topBarFilterActions.sortByReleaseDate(val))
+})
+
+export default connect(mapStateToProps , mapDispatchToProps)(TopBarFilter) 
