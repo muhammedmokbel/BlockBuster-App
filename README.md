@@ -32,4 +32,5 @@ This application uses [The Movie Database, TMDb](https://www.themoviedb.org/) AP
 ## Main Screen </br>
 <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-2021-07-28-09_40_49.png" width="400">
 
-
+## Movie List Screen </br>
+<img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-collection-movies-2021-08-02-14_15_22.png" width="400">

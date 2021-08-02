@@ -4562,7 +4562,7 @@ ul {
   -webkit-appearance: none;
   -moz-appearance: none;
   /* Firefox */
-  background: url('../assets/images/uploads/drop-icon.png') no-repeat right 20px center;
+  background: url('../assets/images/drop-icon.png') no-repeat right 20px center;
   border-left: 1px solid #405266;
   border-right: 1px solid #405266;
   border-top: none;
@@ -5678,7 +5678,7 @@ ul {
 }
 .common-hero {
   height: 385px;
-  background: url('../assets/images/uploads/user-hero-bg.jpg') no-repeat;
+  background: url('../assets/images/bgmovielist.jpg') no-repeat;
 }
 .common-hero:before {
   background-color: rgba(0, 0, 0, 0.4);
@@ -6431,7 +6431,7 @@ ul {
   -webkit-appearance: none;
   -moz-appearance: none;
   /* Firefox */
-  background: url('../assets/images/uploads/drop-icon.png') no-repeat right 20px center;
+  background: url('../assets/images/drop-icon.png') no-repeat right 20px center;
   background-color: #233a50;
 }
 @media (max-width: 991px) {

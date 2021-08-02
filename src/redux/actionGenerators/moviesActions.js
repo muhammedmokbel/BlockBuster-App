@@ -22,7 +22,7 @@ const getTopRatedMovies = ({results = []}) => ({
 })
 
 // get trend movie sync
-const getTrendMovie = ({results = []}) => ({
+export const getTrendMovie = ({results = []}) => ({
     type : actionTypes.GET_TRENDS_MOVIE, 
     payload : results
 })

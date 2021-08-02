@@ -13,7 +13,10 @@ export const nowPlayingMovies = () => ( {
     method : 'GET'
 })
 
-export const trendMovie = () => ({
+export const trendMovie = ({page = 1} = {}) => ({
     url : '/trending/movie/day' , 
     method : 'GET', 
+    params : {
+        page
+    }
 })
