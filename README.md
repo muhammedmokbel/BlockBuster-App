@@ -20,8 +20,9 @@ This app can:
 * HTML && CSS
 * Javascript 
 * React js 
-* redux
-* axios 
+* Redux
+* Formik
+* Axios 
 
 
 ### How to work with the source code:

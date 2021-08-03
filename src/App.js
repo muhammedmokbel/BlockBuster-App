@@ -4,9 +4,14 @@ import Footer from './components/FooterComponent/Footer'
 import Home from './containers/HomeContainer/Home'
 import Collection from './containers/CollectionContainer/Collection'
 
+
+
 const App = () =>  (
+  
     <BrowserRouter>
       <Header />
+  
+    
         <Switch>
 
             <Route component={Home} path='/' exact />

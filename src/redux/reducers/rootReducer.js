@@ -5,6 +5,7 @@ import seriesReducer from './seriesReducer'
 import celebritiesReducer from './celebritiesReducer'
 import paginationReducer from './paginationReducer'
 import topBarFilterReducer from './topBarFilterReducers'
+import searchReducer from './searchReducer'
 
 
 
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     seriesReducer ,
     celebritiesReducer , 
     paginationReducer , 
-    topBarFilterReducer
+    topBarFilterReducer , 
+    searchReducer
 })
 
 export default rootReducer

@@ -63,32 +63,44 @@ class Collection extends React.Component
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<TopBarFilter />
 
-				{this.props.view == "list" && this.props.trendMovies
+				{!this.props.searchResults.length &&  this.props.view == "list" && this.props.trendMovies
 				.slice(this.props.startPoint , this.props.endPoint)
+				.map(item => <MovieListItem key={item.id} {...item} />)}
+
+{this.props.searchResults.length &&  this.props.view == "list" && this.props.searchResults
 				.map(item => <MovieListItem key={item.id} {...item} />)}
 
 				{this.props.view == "grid" ? 
 				<div class="flex-wrap-movielist">
 					
-						{this.props.trendMovies
+						{!this.props.searchResults.length && this.props.trendMovies
 				.slice(this.props.startPoint , this.props.endPoint)
+				.map(item => <MovieGridItem key={item.id} {...item} />)}
+
+{this.props.searchResults.length && this.props.searchResults
 				.map(item => <MovieGridItem key={item.id} {...item} />)}
 					
 					 </div> : null
 					 }
 
+					 
+
+					 
+
+					 
+
 
 
 				
-		
-
-				<Pagination 
+		{!this.props.searchResults.length  && <Pagination 
 				pageNumbers={this.props.moviesPaginationNumbers}
 				currentPage={this.props.currentPage}
 				changePagination={this.props.changePagination}
 				changeItemPerPage={this.props.changeItemPerPage}
 				numberMoviesToShow={this.props.numberMoviesToShow}
-				currentPageTenMode={this.props.currentPageTenMode} />
+				currentPageTenMode={this.props.currentPageTenMode} /> }
+
+				
             </div>
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="sidebar">
@@ -132,19 +144,14 @@ const mapStateToProps = state => {
 	  trendMovies : sortByItems(Formatting(state.moviesReducer.trendMovies) , state.topBarFilterReducer)  , 
 	  trendSeries : Formatting(state.seriesReducer.trendSeries) , 
 	  trendPerson : Formatting(state.celebritiesReducer.trendPerson) , 
-	  popularMovies : Formatting(state.moviesReducer.popular), 
-	  topRatedMovies : Formatting(state.moviesReducer.topRated),
-	  nowPlayingMovies : Formatting(state.moviesReducer.nowPlaying), 
-	  popularSeries : Formatting(state.seriesReducer.popular), 
-	  topRatedSeries : Formatting(state.seriesReducer.topRated),
-	  nowPlayingSeries : Formatting(state.seriesReducer.nowPlaying), 
 	  moviesPaginationNumbers : state.paginationReducer.moviesPaginationNumbers , 
 	  currentPage : state.paginationReducer.currentPage,
 	  startPoint : state.paginationReducer.startPoint , 
 	  endPoint : state.paginationReducer.endPoint , 
 	  numberMoviesToShow : state.paginationReducer.numberMoviesToShow  ,
 	  currentPageTenMode : state.paginationReducer.currentPageTenMode , 
-	  view : state.topBarFilterReducer.view
+	  view : state.topBarFilterReducer.view , 
+	  searchResults : sortByItems(Formatting(state.searchReducer.searchResults) , state.topBarFilterReducer ) 
 	  
 	}
   }
