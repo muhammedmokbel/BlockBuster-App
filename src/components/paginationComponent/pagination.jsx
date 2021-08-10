@@ -2,7 +2,7 @@ import React from 'react'
 
 import {ChevronForward} from 'react-ionicons'
 
-const Pagination = ({pageNumbers , currentPageTenMode , numberMoviesToShow , currentPage , changeItemPerPage , changePagination}) => (
+const Pagination = ({pageNumbers , currentPageTenMode , media_type , numberMoviesToShow , currentPage , changeItemPerPage , changePagination}) => (
     <div class="topbar-filter">
         <label>Movies per page:</label>
         <select
@@ -16,14 +16,14 @@ const Pagination = ({pageNumbers , currentPageTenMode , numberMoviesToShow , cur
 
             {numberMoviesToShow == "20" && pageNumbers.slice(currentPage == 1  ? currentPage - 1 : currentPage - 2  , currentPage + 2).map(item  =>  
             <a 
-            onClick={() => changePagination(item + 1 , numberMoviesToShow , currentPage)}  
+            onClick={() => changePagination(item + 1 , numberMoviesToShow , currentPage , media_type)}  
             className={currentPage == item + 1 ? "active" : ""} 
             href="#">{item + 1}</a>
             )}
 
             {numberMoviesToShow == "10" && pageNumbers.slice(currentPageTenMode == 1  ? currentPageTenMode - 1 : currentPageTenMode - 2  , currentPageTenMode + 2).map(item  =>  
             <a 
-            onClick={() => changePagination(item + 1 , numberMoviesToShow , currentPage)}  
+            onClick={() => changePagination(item + 1 , numberMoviesToShow , currentPage, media_type)}  
             className={currentPageTenMode == item + 1 ? "active" : ""} 
             href="#">{item + 1}</a>
             )}   
@@ -43,7 +43,7 @@ const Pagination = ({pageNumbers , currentPageTenMode , numberMoviesToShow , cur
             .map(item  =>  
             <a 
             className={currentPage == item + 1 ? "active" : ""}
-            onClick={() => changePagination(item + 1, numberMoviesToShow , currentPage)}  
+            onClick={() => changePagination(item + 1, numberMoviesToShow , currentPage, media_type)}  
             href="#">{item + 1}</a>
             ) : null}
 
@@ -52,11 +52,11 @@ const Pagination = ({pageNumbers , currentPageTenMode , numberMoviesToShow , cur
             .map(item  =>  
             <a 
             className={currentPageTenMode == item + 1 ? "active" : ""} 
-            onClick={() => changePagination(item + 1, numberMoviesToShow , currentPage)}  
+            onClick={() => changePagination(item + 1, numberMoviesToShow , currentPage, media_type)}  
             href="#">{item + 1}</a>
             ) : null}
          
-            <a href="#"><ChevronForward onClick={() => changePagination(currentPage + 1)}    width="17px" height="17px" style={{paddingTop : '3px'}} color="white" /></a>
+            <a href="#"><ChevronForward onClick={() => changePagination(currentPage + 1,numberMoviesToShow , currentPage, media_type)}    width="17px" height="17px" style={{paddingTop : '3px'}} color="white" /></a>
         </div>
     </div>
 )

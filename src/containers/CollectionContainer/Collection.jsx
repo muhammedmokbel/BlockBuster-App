@@ -27,13 +27,21 @@ class Collection extends React.Component
 
 	componentDidMount() {
 
-		console.log(this.props.moviesPaginationNumbers)
 		
-		if (this.props.match.params.version)
+		if (this.props.match.params.version == "movies")
 		{
 			this.props.getMovies()
 			.then(res => {
 				
+				this.setState({
+					isloading : false 
+				})
+			})
+		}
+		else if (this.props.match.params.version == "tv")
+		{
+			this.props.getSeries()
+			.then(res => {
 				this.setState({
 					isloading : false 
 				})
@@ -50,8 +58,9 @@ class Collection extends React.Component
                     <div class="row">
                         <div class="col-md-12">
                             <div class="hero-ct">
-                                <h1> movie listing - list</h1>
-                                <BreadCumb />
+                                <h1>{this.props.match.params.version=="tv" ? "series listing - list" :" movie listing - list"} </h1>
+                                <BreadCumb
+								mediaType={this.props.match.params.version} />
                             </div>
                         </div>
                     </div>
@@ -63,19 +72,36 @@ class Collection extends React.Component
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<TopBarFilter />
 
-				{!this.props.searchResults.length &&  this.props.view == "list" && this.props.trendMovies
+				{this.props.match.params.version == "movies" ?
+				!this.props.searchResults.length &&
+				  this.props.view == "list" && this.props.trendMovies
 				.slice(this.props.startPoint , this.props.endPoint)
-				.map(item => <MovieListItem key={item.id} {...item} />)}
+				.map(item => <MovieListItem key={item.id} {...item} />)
+				: this.props.match.params.version == "tv" ? 
+				!this.props.searchResults.length &&
+				  this.props.view == "list" && this.props.trendSeries
+				.slice(this.props.startPoint , this.props.endPoint)
+				.map(item => <MovieListItem key={item.id} {...item} />) : null}
 
-{this.props.searchResults.length &&  this.props.view == "list" && this.props.searchResults
+				
+
+				{this.props.searchResults.length &&
+				this.props.view == "list" &&
+				this.props.searchResults
 				.map(item => <MovieListItem key={item.id} {...item} />)}
 
 				{this.props.view == "grid" ? 
 				<div class="flex-wrap-movielist">
 					
-						{!this.props.searchResults.length && this.props.trendMovies
+						{this.props.match.params.version == "movies"  ?
+						!this.props.searchResults.length && this.props.trendMovies
 				.slice(this.props.startPoint , this.props.endPoint)
-				.map(item => <MovieGridItem key={item.id} {...item} />)}
+				.map(item => <MovieGridItem key={item.id} {...item} />) : 
+				this.props.match.params.version == "tv" ? 
+				!this.props.searchResults.length && this.props.trendSeries
+				.slice(this.props.startPoint , this.props.endPoint)
+				.map(item => <MovieGridItem key={item.id} {...item} />) : null
+			}
 
 {this.props.searchResults.length && this.props.searchResults
 				.map(item => <MovieGridItem key={item.id} {...item} />)}
@@ -93,6 +119,7 @@ class Collection extends React.Component
 
 				
 		{!this.props.searchResults.length  && <Pagination 
+				media_type={this.props.match.params.version}
 				pageNumbers={this.props.moviesPaginationNumbers}
 				currentPage={this.props.currentPage}
 				changePagination={this.props.changePagination}
@@ -109,20 +136,7 @@ class Collection extends React.Component
 						<img src="images/uploads/ads1.png" alt="" />
 					</div>
 
-					{/* <div class="sb-facebook sb-it">
-						<h4 class="sb-title">Find us on Facebook</h4>
-						<iframe src="" data-src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhaintheme%2F%3Ffref%3Dts&tabs=timeline&width=340&height=315px&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"  height="315" style="width:100%;border:none;overflow:hidden" ></iframe>
-					</div> */}
-
-					{/* <div class="sb-twitter sb-it">
-						<h4 class="sb-title">Tweet to us</h4>
-						<div class="slick-tw">
-							<div class="tweet item" id="599202861751410688">
-							</div>
-							<div class="tweet item" id="297462728598122498">
-							</div>
-						</div>							
-					</div> */}
+					
 
 				</div>
                 
@@ -142,7 +156,7 @@ const mapStateToProps = state => {
 
 	return {
 	  trendMovies : sortByItems(Formatting(state.moviesReducer.trendMovies) , state.topBarFilterReducer)  , 
-	  trendSeries : Formatting(state.seriesReducer.trendSeries) , 
+	  trendSeries : sortByItems(Formatting(state.seriesReducer.trendSeries) , state.topBarFilterReducer)  , 
 	  trendPerson : Formatting(state.celebritiesReducer.trendPerson) , 
 	  moviesPaginationNumbers : state.paginationReducer.moviesPaginationNumbers , 
 	  currentPage : state.paginationReducer.currentPage,
@@ -162,9 +176,14 @@ const mapStateToProps = state => {
 	  getCelebrities : () => dispatch(celebrities.getCelebritiesAsync()) ,
 	  getMovies : () => dispatch(movies.getMoviesAsync()) , 
 	  getSeries : () => dispatch(series.getSeriesAsync()) , 
-	  changePagination : (newPage , showPage , currentPage) =>{
+	  changePagination : (newPage , showPage , currentPage , mediaType) =>{
+		 
 		  if (showPage == '20' || (showPage == "10" &&  ( Math.floor((newPage + 1 ) / 2)) != currentPage ))
-			dispatch(pagination.changeCurrentPaginationAsync(newPage , 'trend' , showPage))
+		  {
+			
+			dispatch(pagination.changeCurrentPaginationAsync(newPage , mediaType , showPage))
+		  }
+			
 		  else 
 		  	dispatch(pagination.changeItemRange(newPage))
 	

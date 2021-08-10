@@ -13,9 +13,12 @@ export const nowPlayingSeries = () => ( {
     method : 'GET'
 })
 
-export const trendTv = () => ( {
+export const trendTv = ({page = 1} = {}) => ( {
     url : '/trending/tv/day' , 
-    method : 'GET'
+    method : 'GET' , 
+    params : {
+        page
+    }
 })
 
 export const videosTv = (id) => ( {

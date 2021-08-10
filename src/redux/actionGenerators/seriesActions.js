@@ -22,7 +22,7 @@ const getNowPlayingSeries = ({results = []}) => ({
 })
 
 // get trend tv sync
-const getTrendTv = ({results = []}) => ({
+export const getTrendTv = ({results = []}) => ({
     type : actionTypes.GET_TRENDS_TV, 
     payload : results
 })
@@ -36,7 +36,7 @@ const getVideosTv = (results ) => ({
 // get series sync 
 export const getSeriesAsync = () => {
     return dispatch => {
-        Promise.all([request(seriesObject.nowPlayingSeries()),
+      return  Promise.all([request(seriesObject.nowPlayingSeries()),
         request(seriesObject.popularSeries()), 
     request(seriesObject.topRatedSeries()),
 request(seriesObject.trendTv())])

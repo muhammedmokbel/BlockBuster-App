@@ -1,6 +1,8 @@
 import * as actionTypes from '../actionTypes'
 import * as moviesObject from '../../services/serviceObjects/moviesObject'
+import * as seriesObject from '../../services/serviceObjects/seriesObject'
 import * as moviesActions from './moviesActions'
+import * as seriesActions from './seriesActions'
 
 import {request} from '../../services/request'
 
@@ -24,14 +26,31 @@ export const changeItemRange = (newPage) => ({
 
 // change current page Async 
 
-export const changeCurrentPaginationAsync = (newPage , movieType , showPage) => {
+export const changeCurrentPaginationAsync = (newPage , mediaType , showPage) => {
     return dispatch => {
-        if (movieType == 'trend')
-       return  request(moviesObject.trendMovie({page :showPage == "20" ? newPage : Math.floor( (newPage + 1) / 2 ) }))
+       
+        if (mediaType == 'movie')
+        {
+
+            return  request(moviesObject.trendMovie({page :showPage == "20" ? newPage : Math.floor( (newPage + 1) / 2 ) }))
+            .then(res =>{
+                 dispatch(moviesActions.getTrendMovie(res))
+                 dispatch(changeCurrentPagination(newPage))
+                } )
+        }
+      
+        if (mediaType == "tv")
+        {
+            alert("test me")
+
+            return  request(seriesObject.trendTv({page :showPage == "20" ? newPage : Math.floor( (newPage + 1) / 2 ) }))
         .then(res =>{
-             dispatch(moviesActions.getTrendMovie(res))
+             dispatch(seriesActions.getTrendTv(res))
              dispatch(changeCurrentPagination(newPage))
             } )
+
+        }
+        
     }
 }
 
