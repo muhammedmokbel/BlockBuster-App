@@ -1,8 +1,10 @@
 import * as actionTypes from '../actionTypes'
 import * as moviesObject from '../../services/serviceObjects/moviesObject'
 import * as seriesObject from '../../services/serviceObjects/seriesObject'
+import * as celebritiesObject from '../../services/serviceObjects/celebritiesObjects'
 import * as moviesActions from './moviesActions'
 import * as seriesActions from './seriesActions'
+import * as celebritiesActions from './celebritiesActions'
 
 import {request} from '../../services/request'
 
@@ -39,9 +41,9 @@ export const changeCurrentPaginationAsync = (newPage , mediaType , showPage) => 
                 } )
         }
       
-        if (mediaType == "tv")
+        else if (mediaType == "tv")
         {
-            alert("test me")
+            
 
             return  request(seriesObject.trendTv({page :showPage == "20" ? newPage : Math.floor( (newPage + 1) / 2 ) }))
         .then(res =>{
@@ -49,6 +51,15 @@ export const changeCurrentPaginationAsync = (newPage , mediaType , showPage) => 
              dispatch(changeCurrentPagination(newPage))
             } )
 
+        }
+
+        else if (mediaType == "celebrities")
+        {
+            return  request(celebritiesObject.trendPerson({page :showPage == "20" ? newPage : Math.floor( (newPage + 1) / 2 ) }))
+            .then(res =>{
+                 dispatch(celebritiesActions.getTrendPerson(res))
+                 dispatch(changeCurrentPagination(newPage))
+                } )
         }
         
     }

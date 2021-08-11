@@ -8,8 +8,8 @@ const Pagination = ({pageNumbers , currentPageTenMode , media_type , numberMovie
         <select
         onChange={e => changeItemPerPage(e.target.value ,currentPage )}
         >
-            <option value="10">10 Movies</option>
-            <option selected value="20">20 Movies</option>
+            <option value="10">10 {media_type}</option>
+            <option selected value="20">20 {media_type}</option>
         </select>
         <div class="pagination2">
             <span>Page 1 of {pageNumbers.length}:</span>

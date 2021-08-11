@@ -13,12 +13,20 @@ export const searchResults = ({results = []} = {}) => ({
 
 // updating search results Async 
 
-export const searchResultsAsync = (searchData = {} ) => {
+export const searchResultsAsync = (searchData = {} , mediaType ) => {
+ 
 
     return dispatch => {
 
-        return request(searchObject.searchData(searchData))
-        .then(res => dispatch(searchResults(res)))
+        if (mediaType == "movies")
+            return request(searchObject.searchDataMovies(searchData))
+            .then(res => dispatch(searchResults(res)))
+        else if (mediaType == "tv")
+            return request(searchObject.searchDataTv(searchData))
+            .then(res => dispatch(searchResults(res)))
+        else if (mediaType == "celebrities")
+            return request(searchObject.searchDataPerson(searchData))
+            .then(res => dispatch(searchResults(res)))
 
     }
 

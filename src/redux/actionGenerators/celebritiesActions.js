@@ -5,7 +5,7 @@ import * as celebritiesServiceObject from '../../services/serviceObjects/celebri
 
 
 // get trend person sync
-const getTrendPerson = ({results = []}) => ({
+export const getTrendPerson = ({results = []}) => ({
     type : actionTypes.GET_TRENDS_PERSON, 
     payload : results
 })

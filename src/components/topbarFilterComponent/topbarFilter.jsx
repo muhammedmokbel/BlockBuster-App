@@ -5,11 +5,35 @@ import {connect} from 'react-redux'
 
 import {ListOutline , Grid , GridOutline} from 'react-ionicons'
 
-const TopBarFilter = ({changeView , view , sortByPopularity , sortByRating , sortByReleaseDate}) => (
+const TopBarFilter = ({changeView , mediaType , view , sortByPopularity , sortByRating , sortByReleaseDate}) => (
     <div class="topbar-filter">
-        <p>Found <span>1,608 movies</span> in total</p>
+        <p>Found <span>1,608 {mediaType}</span> in total</p>
         <label>Sort by:</label>
-        <select
+        {mediaType != "celebrities" ? 
+         <select
+         onChange={(e) =>{
+           
+             switch(e.target.value.split('-')[0])
+             {
+                 case "popularity" : 
+                     sortByPopularity(e.target.value.split('-')[1])
+                 break 
+                 case "rating" : 
+                     sortByRating(e.target.value.split('-')[1])
+                 break 
+                 case "date" : 
+                     sortByReleaseDate(e.target.value.split('-')[1])
+ 
+             }
+         } }>
+             <option value="popularity-Descending">Popularity Descending</option>
+             <option value="popularity-Ascending">Popularity Ascending</option>
+             <option value="rating-Descending">Rating Descending</option>
+             <option value="rating-Ascending">Rating Ascending</option>
+             <option value="date-Descending">Release date Descending</option>
+             <option value="date-Ascending">Release date Ascending</option>
+             
+         </select> :  <select
         onChange={(e) =>{
           
             switch(e.target.value.split('-')[0])
@@ -27,11 +51,10 @@ const TopBarFilter = ({changeView , view , sortByPopularity , sortByRating , sor
         } }>
             <option value="popularity-Descending">Popularity Descending</option>
             <option value="popularity-Ascending">Popularity Ascending</option>
-            <option value="rating-Descending">Rating Descending</option>
-            <option value="rating-Ascending">Rating Ascending</option>
-            <option value="date-Descending">Release date Descending</option>
-            <option value="date-Ascending">Release date Ascending</option>
-        </select>
+         
+            
+        </select> }
+       
         
         <a href="#" class="list"><ListOutline onClick={() => changeView('list')} style={{marginRight : "5px"}} color="white" cssClasses={view == "list" ? "active" :  'test' } /></a>
         <a  href="#" class="grid"> <GridOutline onClick={() => changeView('grid')} style={{marginTop : "5px"}} color="white" cssClasses={view == "grid" ? "active" :  'test' } /> </a>

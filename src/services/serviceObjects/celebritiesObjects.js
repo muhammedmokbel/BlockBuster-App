@@ -1,6 +1,9 @@
 
 
-export const trendPerson = () => ( {
+export const trendPerson = ({page = 1} = {}) => ( {
     url : '/trending/person/day' , 
-    method : 'GET'
+    method : 'GET' , 
+    params : {
+        page
+    }
 })
