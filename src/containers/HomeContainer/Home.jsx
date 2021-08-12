@@ -271,7 +271,9 @@ class Home extends React.Component {
              myRef={this.handleSlick1}
              myAsNavFor={this.state.slider2}>
 
-               {this.props.trailersSeries.map((item, index) =>{
+               {this.props.trailersSeries.length && this.props.trailersSeries.map((item, index) =>{
+
+                 console.log(item)
                
                  return (
                   <SliderItemTrailer 

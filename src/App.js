@@ -3,26 +3,38 @@ import Header from './components/HeaderComponent/Header'
 import Footer from './components/FooterComponent/Footer'
 import Home from './containers/HomeContainer/Home'
 import Collection from './containers/CollectionContainer/Collection'
+import NotFound from './containers/NotFoundContainer/NotFound'
 
 
 
 const App = () =>  (
   
     <BrowserRouter>
-      <Header />
+      
   
     
         <Switch>
 
-            <Route component={Home} path='/' exact />
-            <Route component={Collection} path='/collection/:version' /> 
-            <Route component={() => <p>not found</p>}  />
+            <Route component={MainLayout(Home)} path='/' exact />
+            <Route component={MainLayout(Collection)} path='/collection/:version' /> 
+            <Route component={NotFound}  />
 
         </Switch>
-      <Footer />
-
+     
     </BrowserRouter>
   )
+
+  const MainLayout = (WrappedComponent) => {
+    return (props) => (
+      <div>
+      <Header />
+      <WrappedComponent {...props}/>
+      <Footer />
+
+      </div>
+    )
+  }
+
 
 
 export default App;

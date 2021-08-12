@@ -33,8 +33,12 @@ This application uses [The Movie Database, TMDb](https://www.themoviedb.org/) AP
 ## Main Screen </br>
 <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-2021-07-28-09_40_49.png" width="400">
 
-## Movie items List View </br>
+## Movie & Series items List View </br>
 <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-collection-movies-2021-08-02-16_36_55.png" width="400">
 
-## Movie items Grid View </br>
+## Movie & Series items Grid View </br>
 <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-collection-movies-2021-08-02-16_39_18.png" width="400">
+
+
+## 404 Page </br>
+<img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-adada-2021-08-12-19_14_47.png" width="400">

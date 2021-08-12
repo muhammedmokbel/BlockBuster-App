@@ -28,7 +28,7 @@ export const getTrendTv = ({results = []}) => ({
 })
 
 // get videos tv sync 
-const getVideosTv = (results ) => ({
+const getVideosTv = (results = {} ) => ({
     type : actionTypes.GET_VIDEOS_SERIES , 
     payload : results
 })

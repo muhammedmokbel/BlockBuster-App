@@ -31,7 +31,7 @@ export const changeItemRange = (newPage) => ({
 export const changeCurrentPaginationAsync = (newPage , mediaType , showPage) => {
     return dispatch => {
        
-        if (mediaType == 'movie')
+        if (mediaType == 'movies')
         {
 
             return  request(moviesObject.trendMovie({page :showPage == "20" ? newPage : Math.floor( (newPage + 1) / 2 ) }))

@@ -6,11 +6,11 @@ import ReactPlayer from 'react-player/youtube'
 
 const SliderItemTrailer = ({id , isPlaying , idPlaying ,  onstart}) => { 
 
-    console.log(isPlaying)
-
+ 
     return (
     <div>
         <ReactPlayer 
+        controls
         key={id}
         width='100%' 
         height='100%' 

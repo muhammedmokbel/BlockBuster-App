@@ -32,10 +32,13 @@ const seriesReducer = (state = seriesState , action) => {
                     trendSeries : action.payload, 
                 }
             case actionTypes.GET_VIDEOS_SERIES : 
+            
+               
                 return {
                     ...state , 
                     trailers : state.trailers.concat(action.payload)
                 }
+                
             default : 
                 return state
         }

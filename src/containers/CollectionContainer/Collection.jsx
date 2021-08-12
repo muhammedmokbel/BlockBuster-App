@@ -24,10 +24,27 @@ import SearchForm from '../../components/searchFormComponent/searchForm'
 class Collection extends React.Component 
 {
     state = {
-		isloading : true 
+		isloading : true , 
+		version : null 
     }
 
+	componentDidUpdate(){
+		console.log(this.props.match.params.version)
+		if (this.state.version != this.props.match.params.version)
+		{
+			
+			this.setState({
+				version : this.props.match.params.version
+			})
+
+			this.props.changePagination(1 , 20 , null , this.props.match.params.version)
+
+		}
+	}
+
 	componentDidMount() {
+
+	
 
 		
 		if (this.props.match.params.version == "movies")
@@ -36,7 +53,8 @@ class Collection extends React.Component
 			.then(res => {
 				
 				this.setState({
-					isloading : false 
+					isloading : false , 
+					version : this.props.match.params.version
 				})
 			})
 		}
@@ -45,7 +63,8 @@ class Collection extends React.Component
 			this.props.getSeries()
 			.then(res => {
 				this.setState({
-					isloading : false 
+					isloading : false , 
+					version : this.props.match.params.version
 				})
 			})
 		}
@@ -54,7 +73,8 @@ class Collection extends React.Component
 			this.props.getCelebrities()
 			.then(res => {
 				this.setState({
-					isloading : false 
+					isloading : false , 
+					version : this.props.match.params.version
 				})
 			})
 		}
@@ -215,6 +235,7 @@ const mapStateToProps = state => {
 	  getMovies : () => dispatch(movies.getMoviesAsync()) , 
 	  getSeries : () => dispatch(series.getSeriesAsync()) , 
 	  changePagination : (newPage , showPage , currentPage , mediaType) =>{
+		  
 		 
 		  if (showPage == '20' || (showPage == "10" &&  ( Math.floor((newPage + 1 ) / 2)) != currentPage ))
 		  {
