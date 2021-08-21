@@ -20,3 +20,5 @@ export const trendMovie = ({page = 1} = {}) => ({
         page
     }
 })
+
+const x = "append_to_response=credits,reviews,keywords,similar"

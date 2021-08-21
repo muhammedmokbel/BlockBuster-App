@@ -8290,3 +8290,19 @@ footer.full-width-ft .ft-copyright {
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
 }
+
+.icons-style {
+  color: #dd003f !important;
+  fill: #dd003f !important;
+  border: 1px solid #dd003f;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.icons-style:hover {
+  background-color: #dd003f;
+  color: white !important;
+  fill: white !important;
+}

@@ -3,6 +3,7 @@ import Header from './components/HeaderComponent/Header'
 import Footer from './components/FooterComponent/Footer'
 import Home from './containers/HomeContainer/Home'
 import Collection from './containers/CollectionContainer/Collection'
+import Details from './containers/DetailsContainer/Details'
 import NotFound from './containers/NotFoundContainer/NotFound'
 
 
@@ -16,7 +17,8 @@ const App = () =>  (
         <Switch>
 
             <Route component={MainLayout(Home)} path='/' exact />
-            <Route component={MainLayout(Collection)} path='/collection/:version' /> 
+            <Route  component={MainLayout(Collection)} path='/collection/:version' /> 
+            <Route  component={MainLayout(Details)} path='/Details/:id' /> 
             <Route component={NotFound}  />
 
         </Switch>

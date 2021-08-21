@@ -1,4 +1,5 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 
@@ -78,6 +79,9 @@ class Collection extends React.Component
 				})
 			})
 		}
+		else 
+			this.props.history.push('/notFound')
+
 	}
     
     render(){

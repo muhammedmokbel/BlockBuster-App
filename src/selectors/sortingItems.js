@@ -2,6 +2,7 @@ import moment from "moment"
 
 export const  sortByItems = (itemsList , {sortBy , direction}) => {
 
+ 
     return itemsList.sort((a, b) => {
 
         switch (sortBy) {

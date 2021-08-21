@@ -5,12 +5,14 @@ import {connect} from 'react-redux'
 
 import {ListOutline , Grid , GridOutline} from 'react-ionicons'
 
-const TopBarFilter = ({changeView , mediaType , view , sortByPopularity , sortByRating , sortByReleaseDate}) => (
+const TopBarFilter = ({changeView , contant , direction , sortBy , mediaType , view , sortByPopularity , sortByRating , sortByReleaseDate}) => (
     <div class="topbar-filter">
+        {console.log(sortBy , direction)}
         <p>Found <span>1,608 {mediaType}</span> in total</p>
         <label>Sort by:</label>
         {mediaType != "celebrities" ? 
          <select
+         value={sortBy.toLowerCase() + "-" + direction}
          onChange={(e) =>{
            
              switch(e.target.value.split('-')[0])
@@ -34,6 +36,7 @@ const TopBarFilter = ({changeView , mediaType , view , sortByPopularity , sortBy
              <option value="date-Ascending">Release date Ascending</option>
              
          </select> :  <select
+          value={sortBy.toLowerCase() + "-" + direction}
         onChange={(e) =>{
           
             switch(e.target.value.split('-')[0])
@@ -55,14 +58,20 @@ const TopBarFilter = ({changeView , mediaType , view , sortByPopularity , sortBy
             
         </select> }
        
+       {contant != "reviews" ?
+       <div>
+         <a href="#" class="list"><ListOutline onClick={() => changeView('list')} style={{marginRight : "5px"}} color="white" cssClasses={view == "list" ? "active" :  'test' } /></a>
+         <a  href="#" class="grid"> <GridOutline onClick={() => changeView('grid')} style={{marginTop : "5px"}} color="white" cssClasses={view == "grid" ? "active" :  'test' } /> </a>
+        </div> : null }
         
-        <a href="#" class="list"><ListOutline onClick={() => changeView('list')} style={{marginRight : "5px"}} color="white" cssClasses={view == "list" ? "active" :  'test' } /></a>
-        <a  href="#" class="grid"> <GridOutline onClick={() => changeView('grid')} style={{marginTop : "5px"}} color="white" cssClasses={view == "grid" ? "active" :  'test' } /> </a>
+      
     </div>
 )
 
 const mapStateToProps = state => ({
-    view :  state.topBarFilterReducer.view
+    view :  state.topBarFilterReducer.view , 
+    sortBy : state.topBarFilterReducer.sortBy  , 
+    direction : state.topBarFilterReducer.direction 
 })
 
 const mapDispatchToProps = dispatch => ({
