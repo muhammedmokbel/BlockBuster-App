@@ -202,6 +202,7 @@ class Home extends React.Component {
 
                     <TabContant 
                     tabs={this.state.tabs}
+                    currentTab={this.state.currentTabOne}
                     data={this.state.currnetTabOneData}/>
 				    
         </div>
@@ -218,6 +219,7 @@ class Home extends React.Component {
 
                     <TabContant 
                     tabs={this.state.tabs}
+                    currentTab={this.state.currentTabTwo}
                     data={this.state.currentTabTwoData}/>
 				    
         </div>

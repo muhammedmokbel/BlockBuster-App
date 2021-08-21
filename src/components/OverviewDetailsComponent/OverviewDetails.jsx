@@ -12,7 +12,7 @@ const OverviewDetails = () => (
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12">
             <p>Tony Stark creates the Ultron Program to protect the world, but when the peacekeeping program becomes hostile, The Avengers go into action to try and defeat a virtually impossible enemy together. Earth's mightiest heroes must come together once again to protect the world from global extinction.</p>
-            <MediaItem />
+            {/* <MediaItem /> */}
             <div class="title-hd-sm">
                 <h4>cast</h4>
                 <a href="#" class="time">Full Cast & Crew  <i class="ion-ios-arrow-right"></i></a>

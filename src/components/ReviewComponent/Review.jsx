@@ -15,7 +15,7 @@ const Review = () => (
                 <a href="#" class="redbtn">Write Review</a>
             </div>
             <TopBarFilter
-            contant="reviews" />
+            contant="details" />
 
             <ReviewItem /> 
 

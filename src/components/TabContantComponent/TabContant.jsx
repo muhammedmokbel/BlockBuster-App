@@ -3,10 +3,10 @@ import React from 'react' ;
 import Slider from '../SliderComponent/Slider';
 import SliderItemAlt from '../SliderItemAltComponent/SliderItemAlt'
 
-const TabContant = ({tabs , data}) => (
+const TabContant = ({tabs , currentTab , data}) => (
     
     <div class="tab-content">
-         <div id={"tab1"} className={"tab active"}>
+         <div id={currentTab} className={"tab active"}>
                 <div class="row">
                     <div class="slick-multiItem">
                     

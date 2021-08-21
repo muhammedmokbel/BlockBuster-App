@@ -27,6 +27,12 @@ export const getTrendMovie = ({results = []}) => ({
     payload : results
 })
 
+// get details of movie sync 
+const getMovieDetails = (result = {}) => ({
+    type : actionTypes.GET_MOVIE_DETAILS , 
+    payload : result
+}) 
+
 // get movies async 
 
 export const getMoviesAsync = () => {
@@ -43,4 +49,11 @@ export const getMoviesAsync = () => {
         })
     }
 
+}
+
+export const getMovieDetailsAsync = (id) => {
+    return  dispatch => {
+       return request(moviesObject.movieDetails(id))
+        .then(res => dispatch(getMovieDetails(res)))
+    }
 }

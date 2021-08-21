@@ -20,7 +20,7 @@ This app can:
 * HTML && CSS
 * Javascript 
 * React js 
-* Redux
+* Redux <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/logos/Redux.png" width="40" height="40">
 * Formik
 * Axios 
 

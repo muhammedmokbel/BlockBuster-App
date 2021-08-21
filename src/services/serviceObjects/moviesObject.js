@@ -21,4 +21,10 @@ export const trendMovie = ({page = 1} = {}) => ({
     }
 })
 
-const x = "append_to_response=credits,reviews,keywords,similar"
+export const movieDetails = (id = 0) =>( {
+    url : `/movie/${id}` , 
+    method : 'GET' , 
+    params  : {
+        append_to_response : 'credits,reviews,keywords,similar'
+    }
+})

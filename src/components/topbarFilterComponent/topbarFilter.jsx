@@ -58,11 +58,11 @@ const TopBarFilter = ({changeView , contant , direction , sortBy , mediaType , v
             
         </select> }
        
-       {contant != "reviews" ?
-       <div>
+       {contant != "details" ?
+       <>
          <a href="#" class="list"><ListOutline onClick={() => changeView('list')} style={{marginRight : "5px"}} color="white" cssClasses={view == "list" ? "active" :  'test' } /></a>
          <a  href="#" class="grid"> <GridOutline onClick={() => changeView('grid')} style={{marginTop : "5px"}} color="white" cssClasses={view == "grid" ? "active" :  'test' } /> </a>
-        </div> : null }
+        </> : null }
         
       
     </div>

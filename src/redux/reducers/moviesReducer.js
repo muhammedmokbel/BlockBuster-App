@@ -6,6 +6,7 @@ const moviesState = {
     topRated : [] , 
     nowPlaying : [] ,
     trendMovies : [] , 
+    movieDetails : {}
 }
 
 const moviesReducer = (state = moviesState , action) => {
@@ -30,6 +31,11 @@ const moviesReducer = (state = moviesState , action) => {
                 return {
                     ...state , 
                     trendMovies : action.payload , 
+                }
+            case actionTypes.GET_MOVIE_DETAILS : 
+                return {
+                    ...state , 
+                    movieDetails : action.payload
                 }
             default : 
                 return state

@@ -1,4 +1,7 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
+import * as movieActions from '../../redux/actionGenerators/moviesActions'
 
 import Preloader from '../../components/PreloaderComponent/Preloader'
 import BackDrop from '../../components/backDropComponent/backDrop'
@@ -18,9 +21,20 @@ class Details extends React.PureComponent
             { tabName : 'Overview'} , 
             {tabName : 'Reviews'} , 
             {tabName : 'Cast & Crew'} , 
-            {tabName : 'Media'} , 
+            // {tabName : 'Media'} , 
             {tabName : 'Related Movies'}
         ]
+    }
+
+    componentDidMount() {
+
+        this.props.getDetails(this.props.match.params.id)
+        .then(res => {
+            console.log(res)
+            this.setState({
+                isloading : false 
+            })
+        })
     }
 
     handleChangeTab = (tabName) => {
@@ -33,7 +47,7 @@ class Details extends React.PureComponent
     render(){
         return (
             <Preloader
-            isloading={false}>
+            isloading={this.state.isloading}>
                 <BackDrop />
             <div class="page-single movie-single movie_single">
 	            <div class="container">
@@ -75,5 +89,17 @@ class Details extends React.PureComponent
     }
 }
 
+const mapStateToProps = state => {
+    return {
 
-export default Details ; 
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getDetails : (id) => dispatch(movieActions.getMovieDetailsAsync(id))
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Details) ; 

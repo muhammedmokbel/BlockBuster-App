@@ -18,7 +18,7 @@ const App = () =>  (
 
             <Route component={MainLayout(Home)} path='/' exact />
             <Route  component={MainLayout(Collection)} path='/collection/:version' /> 
-            <Route  component={MainLayout(Details)} path='/Details/:id' /> 
+            <Route  component={MainLayout(Details)} path='/Details/:version/:id' /> 
             <Route component={NotFound}  />
 
         </Switch>
