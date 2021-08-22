@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import * as movieActions from '../../redux/actionGenerators/moviesActions'
 
+import {Formatting} from '../../selectors/formatting'
+
 import Preloader from '../../components/PreloaderComponent/Preloader'
 import BackDrop from '../../components/backDropComponent/backDrop'
 import PosterSticky from '../../components/PosterStickyComponent/PosterSticky'
@@ -30,7 +32,7 @@ class Details extends React.PureComponent
 
         this.props.getDetails(this.props.match.params.id)
         .then(res => {
-            console.log(res)
+         
             this.setState({
                 isloading : false 
             })
@@ -91,7 +93,7 @@ class Details extends React.PureComponent
 
 const mapStateToProps = state => {
     return {
-
+        movieDetails : Formatting(state.movieReducer.movieDetails) 
     }
 }
 
@@ -102,4 +104,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Details) ; 
+export default connect(null,mapDispatchToProps)(Details) ; 

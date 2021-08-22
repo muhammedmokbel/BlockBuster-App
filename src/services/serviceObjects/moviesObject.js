@@ -25,6 +25,6 @@ export const movieDetails = (id = 0) =>( {
     url : `/movie/${id}` , 
     method : 'GET' , 
     params  : {
-        append_to_response : 'credits,reviews,keywords,similar'
+        append_to_response : 'credits,reviews,keywords,similar,videos'
     }
 })

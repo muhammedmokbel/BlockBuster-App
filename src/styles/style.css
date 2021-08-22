@@ -8306,3 +8306,22 @@ footer.full-width-ft .ft-copyright {
   color: white !important;
   fill: white !important;
 }
+
+.read-more-button
+{
+  color: #4280bf ;
+ 
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.read-more-button:hover {
+  color: #dcf836 ;
+}
+
+
+.styles_playButton__1Q3EF {
+  left: 14% !important;
+  width: 100% !important;
+  opacity: 0;
+}

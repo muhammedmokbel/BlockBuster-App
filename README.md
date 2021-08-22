@@ -6,8 +6,10 @@ This is a Main functional and colorful Web application. The app displays a grid 
 
 ### Features:
 This app can:
-* Display a grid of movie posters based on popularity or rating
-* Allow users to read & write movie reviews
+* Display a grid of movie,series posters based on popularity, rating and release date 
+* Allow users to write reviews and rating movies & series 
+* Allow users to add movies & series to favorite and watchlist 
+* searching on movies and series based on keywords 
 * authentication process
 
 ### Concepts Applied
@@ -15,12 +17,14 @@ This app can:
 * Parsing JavaScript Object Notation (JSON) data
 * Handling and persisting data through different activity lifecycles
 * Handling orientation changes
+* using Data down actions up **Design pattern**
+* using higher Order Components pattern (HOCS)
 
 ### Technologies Implemented
 * HTML && CSS
 * Javascript 
 * React js 
-* Redux <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/logos/Redux.png" width="40" height="40">
+* Redux 
 * Formik
 * Axios 
 
@@ -38,6 +42,10 @@ This application uses [The Movie Database, TMDb](https://www.themoviedb.org/) AP
 
 ## Movie & Series items Grid View </br>
 <img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-collection-movies-2021-08-02-16_39_18.png" width="400">
+
+## Movie & Series Details view </br>
+<img src="https://github.com/muhammedmokbel/BlockBuster-App/blob/master/src/assets/images/screens/screencapture-localhost-3000-Details-movies-379686-2021-08-22-23_20_37.png" width="400">
+
 
 
 ## 404 Page </br>

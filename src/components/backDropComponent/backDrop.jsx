@@ -1,8 +1,12 @@
 import React from 'react'
 
+import {connect} from 'react-redux'
 
-const BackDrop = () => (
-    <div class="hero mv-single-hero">
+import {Formatting} from '../../selectors/formatting'
+
+
+const BackDrop = ({movieDetails}) => (
+    <div style={{backgroundImage : `url(${movieDetails.backdrop_path})` , backgroundPosition : 'center center' , backgroundSize : 'cover'}} class="hero mv-single-hero">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -17,4 +21,10 @@ const BackDrop = () => (
 </div>
 )
 
-export default BackDrop ; 
+const mapStateToProps = state => {
+	return {
+		movieDetails : Formatting(state.moviesReducer.movieDetails) 
+	}
+}
+
+export default connect(mapStateToProps)(BackDrop)  ; 
